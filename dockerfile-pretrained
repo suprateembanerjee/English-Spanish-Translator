@@ -1,0 +1,13 @@
+# Author: Suprateem Banerjee [www.github.com/suprateembanerjee]
+
+FROM jupyter/scipy-notebook
+
+COPY requirements.txt ./requirements.txt
+RUN pip install -r requirements.txt
+RUN rm ./requirements.txt
+
+COPY src ./src
+RUN mkdir models
+RUN gdown 1lmeMyQX_VhtKrx5stEFMYc6CD8glaNnK -O ./models/translator_transformer.keras
+RUN gdown 1SQmTdaNhJDmJOCv-rDmobbwUZ5cG8f3b -O ./models/spanish_vectorization.pkl
+RUN gdown 1cgcQ3R3QsyWPVRgHlNMd5p-kNwcnmoGF -O ./models/english_vectorization.pkl
