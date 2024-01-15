@@ -1,4 +1,5 @@
 # Author: Suprateem Banerjee [www.github.com/suprateembanerjee]
+# Usage: python demo.py "I have never heard her speak english"
 
 import os, argparse
 import requests
