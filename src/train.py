@@ -1,5 +1,5 @@
 # Author: Suprateem Banerjee [www.github.com/suprateembanerjee]
-# Usage: python src/train.py --data data --model models
+# Usage: python src/train.py --data data --model models --epochs 30
 
 import os, re, pickle, random, string, argparse
 from typing import List, Dict, Tuple
