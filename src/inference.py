@@ -16,7 +16,16 @@ import argparse, logging
 from transformer import PositionalEmbedding, TransformerEncoder, TransformerDecoder
 from text_vectorizer import TextVectorizer
 
-def load_vectorizer(filepath:str):
+def load_vectorizer(filepath:str) ->TextVectorizer:
+    '''
+    Loads a vectorizer from a pickle file.
+
+    Parameters:
+    filepath: Path to pickle file containing TextVectorizer data.
+
+    Return:
+    TextVectorizer object loaded from pickle file.
+    '''
 
     vectorization_data = pickle.load(open(filepath, 'rb'))
     vectorizer = TextVectorizer.from_config(vectorization_data['config'])
@@ -24,13 +33,34 @@ def load_vectorizer(filepath:str):
 
     return vectorizer
 
-def load_model(filepath:str):
+def load_model(filepath:str) -> keras.Model:
+    '''
+    Loads a keras model from a pickle file.
+
+    Parameters:
+    filepath: Path to pickle file containing model.
+
+    Return:
+    Keras Model object loaded from pickle file.
+    '''
 
     transformer = keras.models.load_model(filepath)
     return transformer
 
 
-def translate(input_sentence, source_vectorization, target_vectorization, model):
+def translate(input_sentence:str, source_vectorization:TextVectorizer, target_vectorization:TextVectorizer, model:keras.Model) -> str:
+    '''
+    Performs translation inference based on the provided model.
+
+    Parameters:
+    input_sentence: English sentence to be translated.
+    source_vectorization: English Vectorization.
+    target_vectorization: Spanish Vectorization.
+    model: Model to perform inference with.
+
+    Return:
+    String containing translated sentence in Spanish.
+    '''
 
     spa_vocab = target_vectorization.get_vocabulary()
     spa_index_lookup = dict(zip(range(len(spa_vocab)), spa_vocab))
