@@ -1,5 +1,5 @@
 # English to Spanish Translator
-A multi-container full stack application containing a Tensorflow (Keras) Transformer model translating English sentences into Spanish, served over a Flask API in the back end and a React + CSS app in the front end.
+A multi-container full stack application containing a Tensorflow (Keras) Transformer model translating English sentences into Spanish, served over a Flask API in the back end and a React + TypeScript + CSS app in the front end.
 
 ## Usage
 
