@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+
+  frontend:
+    image: translator-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    command: npm run dev
+
+  backend:
+    image: translator-backend-pretrained
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile_pretrained
+    ports:
+      - 5000:5000
+    command: python3 src/api.py

@@ -1,6 +1,7 @@
 # Author: Suprateem Banerjee [www.github.com/suprateembanerjee]
 
 from flask import Flask
+from flask_cors import CORS
 from flask_restful import Resource, Api, reqparse
 from tensorflow import keras
 import json
@@ -12,8 +13,8 @@ source_vectorization = None
 target_vectorization = None
 
 app = Flask(__name__)
+CORS(app, origins=['http://localhost:5173'])
 api = Api(app)
-
 
 class Translate(Resource):
 
@@ -39,6 +40,7 @@ class Translate(Resource):
 			model = load_model(args['model'])
 
 		translated = translate(input_sentence, source_vectorization, target_vectorization, model)
+
 		return {'translated':translated}
 
 api.add_resource(Translate, '/translate')
